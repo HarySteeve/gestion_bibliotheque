@@ -13,7 +13,7 @@
         <li><a href="${pageContext.request.contextPath}/adherant">adherant</a></li>
         <li><a href="${pageContext.request.contextPath}/livre">livre</a></li>
         <li><a href="${pageContext.request.contextPath}/exemplaire">exemplaire</a></li>
-        <li><a href="${pageContext.request.contextPath}/form-bibliothecaire">bibliothecaire</a></li>
+        <li><a href="${pageContext.request.contextPath}/bibliothecaire">bibliothecaire</a></li>
     </ul>
     <h3>Fonctionnalite</h3>
     <ul>

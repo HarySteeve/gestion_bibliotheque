@@ -1,0 +1,5 @@
+\target
+depl.bat
+pom.xml
+\src\webapp\WEB-INF\spring\servlet-context.xml
+\src\webapp\WEB-INF\web.xml

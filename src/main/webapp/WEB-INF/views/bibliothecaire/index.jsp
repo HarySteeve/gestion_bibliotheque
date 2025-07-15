@@ -22,7 +22,7 @@
     </ul>
     <h3>Fonctionnalite adherant</h3>
     <ul>
-        <li><a href="reservation/demande">Demande de reservation</a></li>
+        <li><a href="${pageContext.request.contextPath}/reservation/demande">Demande de reservation</a></li>
     <h3>Login</h3>
     <ul>
         <li><a href="login">login</a></li>

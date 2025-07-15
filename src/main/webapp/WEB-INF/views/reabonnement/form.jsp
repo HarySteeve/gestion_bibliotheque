@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %> 
 <%@ page import="java.util.List, java.time.LocalDate, mg.itu.spring.entity.Adherant" %>
 <%
     List<Adherant> adherants = (List<Adherant>) request.getAttribute("adherants");

@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %> 
 <%@ page import="mg.itu.spring.entity.Profil" %>
 <%
     Profil profil = (Profil) request.getAttribute("profil");

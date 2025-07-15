@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %> 
 <%@ page import="java.util.List, mg.itu.spring.entity.Exemplaire" %>
 <%
     List<Exemplaire> exs = (List<Exemplaire>) request.getAttribute("exemplaires");

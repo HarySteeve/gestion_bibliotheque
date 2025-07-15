@@ -1,3 +1,4 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %> 
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,9 +24,10 @@
     <h3>Fonctionnalite adherant</h3>
     <ul>
         <li><a href="${pageContext.request.contextPath}/reservation/demande">Demande de reservation</a></li>
-    <h3>Login</h3>
+    </ul>
+    <!-- <h3>Login</h3>
     <ul>
         <li><a href="login">login</a></li>
-    </ul>
+    </ul> -->
 </body>
 </html>

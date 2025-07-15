@@ -6,6 +6,7 @@ import mg.itu.spring.entity.Exemplaire;
 import mg.itu.spring.entity.Penalite;
 import mg.itu.spring.entity.Pret;
 import mg.itu.spring.entity.Reabonnement;
+import mg.itu.spring.entity.Reservation;
 import mg.itu.spring.entity.TypePret;
 import mg.itu.spring.repository.PretRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +31,9 @@ public class PretService {
 
     @Autowired
     private ReabonnementService reabonnementService;
+
+    @Autowired
+    private ReservationService reservationService;
 
     // Sauvegarder un prêt (insertion ou mise à jour)
     public Pret save(Pret pret) {
@@ -99,6 +103,13 @@ public class PretService {
 
         if (exemplaire.getDateIndispo() != null) {
             throw new IllegalArgumentException("Exemplaire numéro (" + exemplaire.getNumero() + ") non disponible");
+        }
+
+        Reservation reservation = reservationService.reservationPlusRecenteByExemplaire(exemplaire.getId());
+        if(reservation != null) {
+            if(pret.getDatePris().isBefore(reservation.getDateReservee()) && reservation.getDateValidation() != null) {
+                throw new IllegalArgumentException("Exemplaire numéro (" + exemplaire.getNumero() + ") deja reserve");
+            }
         }
 
         Penalite penalite = penaliteService.getDernierePenalite(adherant.getId());

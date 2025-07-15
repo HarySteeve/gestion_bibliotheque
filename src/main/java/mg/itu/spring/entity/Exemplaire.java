@@ -27,5 +27,6 @@ public class Exemplaire {
     @Column(unique = true)
     private String ref;
 
+    @Column(name = "date_indispo")
     private LocalDate dateIndispo;
 }

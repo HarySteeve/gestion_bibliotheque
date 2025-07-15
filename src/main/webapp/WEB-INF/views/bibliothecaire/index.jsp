@@ -17,7 +17,7 @@
     </ul>
     <h3>Fonctionnalite</h3>
     <ul>
-        <li><a href="livre/preter">preter un livre</a></li>
+        <li><a href="${pageContext.request.contextPath}/livre/preter">preter un livre</a></li>
         <li><a href="reabonnement/add">reabonnement</a></li>
     </ul>
     <h3>Fonctionnalite adherant</h3>

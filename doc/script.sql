@@ -165,8 +165,8 @@ CREATE TABLE demande_prolongement (
     id INT AUTO_INCREMENT PRIMARY KEY,
     id_pret INT NOT NULL,
     date_demande DATE NOT NULL,
-    debut_prolongement DATE NOT NULL,
-    fin_prolongement DATE NOT NULL,
+    debut_prolongement DATE DEFAULT NULL,
+    fin_prolongement DATE DEFAULT NULL,
     FOREIGN KEY (id_pret) REFERENCES pret(id)
 );
 

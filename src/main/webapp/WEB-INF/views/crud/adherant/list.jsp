@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %> 
 <%@ page import="java.util.List" %>
 <%@ page import="mg.itu.spring.entity.Adherant" %>
 
@@ -28,14 +28,13 @@
     <tr>
         <%-- <td><%= a.getId() %></td> --%>
         <td><%= a.getNom() %></td>
-        <td><%= a.getPrenom() %></td>
+        <td><%= a.getPrenom() %></td>   
         <td><%= a.getProfil().getDescription() %></td>
         <td><%= a.getDtn() %></td>
         <td><%= a.getEmail() %></td>
         <td>
             <a href="<%= request.getContextPath() %>/adherant/edit/<%= a.getId() %>">Modifier</a> |
-            <%-- <a href="<%= request.getContextPath() %>/adherant/delete/<%= a.getId() %>"
-               onclick="return confirm('Supprimer ?')">Supprimer</a> --%>
+            <a href="<%= request.getContextPath() %>/adherant/API/detail/<%= a.getId() %>">Detail</a>
         </td>
     </tr>
     <% } %>

@@ -8,4 +8,4 @@
 <body>
     <a href="<%= request.getContextPath() %>/bibliothecaire/index">Ecran pour adherant</a>
 </body>
-</html>
+</html> 

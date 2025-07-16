@@ -28,7 +28,7 @@ public class DemandeProlongementController {
     @GetMapping("/form")
     public String formProlongement(HttpSession session, Model model) {
         Adherant adherant = (Adherant) session.getAttribute("adherant");
-        if (adherant == null) return "redirect:/login";
+        if (adherant == null) return "redirect:/";
 
         List<Pret> prets = pretRepo.findByAdherantIdAndDateRenduIsNull(adherant.getId());
         model.addAttribute("prets", prets);

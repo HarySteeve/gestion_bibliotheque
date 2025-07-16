@@ -60,6 +60,7 @@
         </div>
         
     </form>
-    <a href="${pageContext.request.contextPath}/reservation/liste">Liste des reservations</a>
+    <br>
+    <a href="${pageContext.request.contextPath}/adherant/index">Retour</a>
 </body>
 </html>

@@ -51,5 +51,6 @@
         <% } %>
         </tbody>
     </table>
+    <a href="${pageContext.request.contextPath}/adherant/index">Retour</a>
 </body>
 </html>

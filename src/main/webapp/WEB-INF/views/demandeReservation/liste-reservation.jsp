@@ -3,6 +3,7 @@
 <%@ page import="mg.itu.spring.entity.Reservation" %>
 
 <%
+    Bibliothecaire biblio = session.getAttribute("bibliothecaire");
     List<Reservation> reservations = (List<Reservation>) request.getAttribute("reservations");
 %>
 
@@ -40,7 +41,7 @@
                     <% if (res.getDateValidation() == null) { %>
                         <form action="${pageContext.request.contextPath}/reservation/valider" method="post" style="display:inline;">
                             <input type="hidden" name="idReservation" value="<%= res.getId() %>"/>
-                            <input type="hidden" name="idBibliothecaire" value="1"/>
+                            <input type="hidden" name="idBibliothecaire" value="<%= biblio.getId() %>"/>
                             <button type="submit">Valider</button>
                         </form>
                     <% } else { %>

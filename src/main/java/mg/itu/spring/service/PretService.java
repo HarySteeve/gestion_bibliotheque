@@ -2,6 +2,7 @@ package mg.itu.spring.service;
 
 import mg.itu.spring.entity.AccessibiliteLivre;
 import mg.itu.spring.entity.Adherant;
+import mg.itu.spring.entity.DemandeProlongement;
 import mg.itu.spring.entity.Exemplaire;
 import mg.itu.spring.entity.Penalite;
 import mg.itu.spring.entity.Pret;
@@ -34,6 +35,9 @@ public class PretService {
 
     @Autowired
     private ReservationService reservationService;
+
+    @Autowired
+    private DemandeProlongementService demandeService;
 
     // Sauvegarder un prêt (insertion ou mise à jour)
     public Pret save(Pret pret) {
@@ -76,6 +80,10 @@ public class PretService {
 
     public Pret getExemplairePlusRecente(int idExemplaire) {
         return pretRepository.findDernierPretByExemplaireId(idExemplaire);
+    }
+
+    public Pret pretRecentByAdherantId(int id) {
+        return pretRepository.findTopByAdherantIdOrderByDatePrisDesc(id);
     }
 
     public void verifierPretValide(Pret pret) {
@@ -133,7 +141,13 @@ public class PretService {
 
     public void rendreLivre(Pret pret) {
         int durePretAdherant = pret.getAdherant().getProfil().getDureePret();
-        LocalDate dateNormalRendue = pret.getDatePris().plusDays(durePretAdherant);
+        LocalDate dateNormalRendue;
+        DemandeProlongement demande = demandeService.findByPretId(pret.getId());
+        if(demande != null) {
+            dateNormalRendue = demande.getFinProlongement();
+        } else {
+            dateNormalRendue = pret.getDatePris().plusDays(durePretAdherant);
+        }
         if(pret.getDateRendu().isAfter(dateNormalRendue)) {
             Penalite penalite = new Penalite();
             penalite.setAdherant(pret.getAdherant());

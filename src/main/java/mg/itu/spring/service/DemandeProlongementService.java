@@ -36,6 +36,10 @@ public class DemandeProlongementService {
         demandeRepo.deleteById(id);
     }
 
+    public DemandeProlongement findByPretId(int id) {
+        return demandeRepo.findByPretId(id);
+    }
+
     public String demanderProlongement(int idPret) {
         Pret pret = pretRepository.findById(idPret).orElseThrow(() -> new RuntimeException("Prêt introuvable"));
         Profil profil = pret.getAdherant().getProfil();
@@ -51,7 +55,7 @@ public class DemandeProlongementService {
         demandeProlongement.setDateDemande(LocalDate.now());
         demandeRepo.save(demandeProlongement);
 
-        return "null";
+        return "succes";
     }
 
 }

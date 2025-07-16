@@ -12,7 +12,9 @@ import org.springframework.data.repository.query.Param;
 public interface DemandeProlongementRepository extends JpaRepository<DemandeProlongement, Integer> {
 
     int countByPretId(Integer idPret);
-    
+
     Optional<DemandeProlongement> findTopByPretIdOrderByFinProlongementDesc(Integer idPret);
+
+    DemandeProlongement findByPretId(int idPret);
 
 }

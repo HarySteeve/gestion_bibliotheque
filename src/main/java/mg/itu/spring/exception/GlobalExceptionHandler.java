@@ -36,7 +36,7 @@ public class GlobalExceptionHandler {
     private String handleFormPret(HttpServletRequest request, Model model) {
         String idAdherant = request.getParameter("idAdherant");
         String titreLivre = request.getParameter("titreLivre");
-        String numero = request.getParameter("numero");
+        String reference = request.getParameter("reference");
         String idTypePret = request.getParameter("idTypePret");
         String datePris = request.getParameter("datePris");
         String id = request.getParameter("id");
@@ -48,7 +48,7 @@ public class GlobalExceptionHandler {
 
         model.addAttribute("idAdherant", parseInteger(idAdherant));
         model.addAttribute("titreLivre", titreLivre);
-        model.addAttribute("numero", parseInteger(numero));
+        model.addAttribute("reference", reference);
         model.addAttribute("idTypePret", parseInteger(idTypePret));
         model.addAttribute("datePris", datePris);
 
@@ -62,12 +62,12 @@ public class GlobalExceptionHandler {
     private String handleFormReservation(HttpServletRequest request, Model model) {
         String idAdherant = request.getParameter("idAdherant");
         String titreLivre = request.getParameter("titreLivre");
-        String numero = request.getParameter("numero");
+        String reference = request.getParameter("reference");
         String dateReservee = request.getParameter("dateReservee");
 
         model.addAttribute("idAdherant", parseInteger(idAdherant));
         model.addAttribute("titreLivre", titreLivre);
-        model.addAttribute("numero", parseInteger(numero));
+        model.addAttribute("reference", reference);
         model.addAttribute("dateReservee", dateReservee);
 
         return "demandeReservation/demande-reservation";

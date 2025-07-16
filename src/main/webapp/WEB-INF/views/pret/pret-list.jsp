@@ -2,7 +2,6 @@
 <%@ page import="java.util.*" %>
 <%@ page import="mg.itu.spring.entity.Pret" %>
 <%@ page import="mg.itu.spring.entity.DemandeProlongement" %>
-<%@ page import="mg.itu.spring.entity.DemandeProlongementService" %>
 <%
     List<Pret> listePrets = (List<Pret>) request.getAttribute("listePrets");
 %>

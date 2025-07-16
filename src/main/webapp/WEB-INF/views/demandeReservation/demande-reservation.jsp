@@ -4,7 +4,7 @@
     String errorMessage = (String) request.getAttribute("errorMessage");
     Integer idAdherant = (Integer) request.getAttribute("idAdherant");
     String titreLivre = (String) request.getAttribute("titreLivre");
-    Integer numero = (Integer) request.getAttribute("numero");
+    String reference = (String) request.getAttribute("reference");
     String dateReservee = (String) request.getParameter("dateReservee");
 %>
 <!DOCTYPE html>
@@ -42,9 +42,9 @@
         </div>
         <br>
 
-        <label for="numeroExemplaire">Numero exemplaire</label>
+        <label for="numeroExemplaire">Reference</label>
         <div class="input">
-            <input type="number" name="numero" id="numeroExemplaire" value="<%= (numero != null) ? numero : "" %>">
+            <input type="text" name="reference" id="numeroExemplaire" value="<%= (reference != null) ? reference : "" %>">
         </div>
         <br>
 

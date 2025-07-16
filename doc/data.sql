@@ -61,4 +61,5 @@ INSERT INTO bibliothecaire (nom, prenom, mdp, username, email, date_embauche, da
 
 INSERT INTO frais_reabonnement (id_profil, montant, description, date) VALUES
 (1, 5000, 'Abonnement étudiant annuel', '2025-01-01'),
-(2, 10000, 'Abonnement professeur annuel', '2025-01-01');
+(2, 10000, 'Abonnement professeur annuel', '2025-01-01')
+

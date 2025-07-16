@@ -15,4 +15,6 @@ public interface ExemplaireRepository extends JpaRepository<Exemplaire, Integer>
     Exemplaire findByNumero(int numero);
 
     List<Exemplaire> findByLivreId(int idLivre);
+
+    Exemplaire findByRef(String ref);
 }

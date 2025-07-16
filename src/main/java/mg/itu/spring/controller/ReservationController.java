@@ -39,14 +39,14 @@ public class ReservationController {
     public String demandeReservation(
         @RequestParam String idAdherant,
         @RequestParam String titreLivre,
-        @RequestParam int numero,
+        @RequestParam String reference,
         @RequestParam LocalDate dateReservee,
         RedirectAttributes redirectAttributes,
         Model model
     ) {
         Integer idAdherantInt = Integer.parseInt(idAdherant);
 
-        Exemplaire exemplaire = exemplaireService.findByNum(numero);
+        Exemplaire exemplaire = exemplaireService.findByRef(reference);
         Adherant adherant = adherantService.findById(idAdherantInt).orElse(null);
 
         Reservation reservation = new Reservation();

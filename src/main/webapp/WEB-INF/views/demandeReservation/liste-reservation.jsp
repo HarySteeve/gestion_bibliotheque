@@ -1,9 +1,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %> 
 <%@ page import="java.util.List" %>
 <%@ page import="mg.itu.spring.entity.Reservation" %>
+<%@ page import="mg.itu.spring.entity.Bibliothecaire" %>
 
 <%
-    Bibliothecaire biblio = session.getAttribute("bibliothecaire");
+    Bibliothecaire biblio = (Bibliothecaire) session.getAttribute("bibliothecaire");
     List<Reservation> reservations = (List<Reservation>) request.getAttribute("reservations");
 %>
 
@@ -52,6 +53,6 @@
         <% } %>
         </tbody>
     </table>
-    <a href="${pageContext.request.contextPath}/adherant/index">Retour</a>
+    <a href="${pageContext.request.contextPath}/bibliothecaire/index">Retour</a>
 </body>
 </html>

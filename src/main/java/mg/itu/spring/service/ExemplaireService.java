@@ -51,6 +51,10 @@ public class ExemplaireService {
         return repo.findByLivreId(idLivre);
     }
 
+    public Exemplaire findByRef(String ref) {
+        return repo.findByRef(ref);
+    }
+
     // public String genererRef(Livre livre, int numero) {
     //     return "LIVRE-" + livre.getId() + "-" + numero;
     // }

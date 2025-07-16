@@ -40,6 +40,10 @@ public class DemandeProlongementService {
         return demandeRepo.findByPretId(id);
     }
 
+    // public void verifierDemandeProlongement(DemandeProlongement demande) {
+    //     int nbProlongement 
+    // }
+
     public String demanderProlongement(int idPret) {
         Pret pret = pretRepository.findById(idPret).orElseThrow(() -> new RuntimeException("Prêt introuvable"));
         Profil profil = pret.getAdherant().getProfil();

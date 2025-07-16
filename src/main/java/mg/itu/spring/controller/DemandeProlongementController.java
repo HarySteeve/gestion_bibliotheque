@@ -46,6 +46,7 @@ public class DemandeProlongementController {
 
     @PostMapping("/submit")
     public String submitProlongement(@RequestParam("idPret") Integer idPret, Model model) {
+        
         String erreur = prolongementService.demanderProlongement(idPret);
         if (!erreur.equals("succes")) {
             model.addAttribute("error", erreur);

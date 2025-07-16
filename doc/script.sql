@@ -58,16 +58,6 @@ CREATE TABLE penalite(
     FOREIGN KEY (id_adherant) REFERENCES adherant(id)
 );
 
-CREATE TABLE adherant_etat (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    id_adherant INT NOT NULL,
-    nb_livre_prete INT DEFAULT 0,
-    nb_prolongement_fait INT DEFAULT 0,
-    nb_jour_penalite INT DEFAULT 0,
-    nb_reservation_fait INT DEFAULT 0,
-    FOREIGN KEY (id_adherant) REFERENCES adherant(id)
-);
-
 CREATE TABLE type_pret (
     id INT AUTO_INCREMENT PRIMARY KEY,
     libelle VARCHAR(100) NOT NULL
@@ -168,5 +158,11 @@ CREATE TABLE demande_prolongement (
     debut_prolongement DATE DEFAULT NULL,
     fin_prolongement DATE DEFAULT NULL,
     FOREIGN KEY (id_pret) REFERENCES pret(id)
+);
+
+CREATE TABLE jour_ferie (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    date_ferie DATE DEFAULT NULL,
+    descriptiont TEXT
 );
 

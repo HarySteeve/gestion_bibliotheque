@@ -20,7 +20,7 @@
     // Données pour réinjection après erreur
     Integer idAdherant = (Integer) request.getAttribute("idAdherant");
     String titreLivre = (String) request.getAttribute("titreLivre");
-    Integer numero = (Integer) request.getAttribute("numero");
+    String reference = (String) request.getAttribute("reference");
     Integer idTypePret = (Integer) request.getAttribute("idTypePret");
     String datePris = (String) request.getAttribute("datePris");
     String dateRendu = (String) request.getAttribute("dateRendu");
@@ -59,14 +59,14 @@
         </div>
         <br>
         </div>
-        <label for="numeroExemplaire">Numero exemplaire</label>
+        <label for="numeroExemplaire">Reference</label>
         <div class="input">
-            <input type="number" name = "numero" id = "numeroExemplaire" value="<%= isEdit ? pret.getExemplaire().getNumero() : (numero != null ? numero : "") %>">
+            <input type="text" name = "reference" id = "numeroExemplaire" value="<%= isEdit ? pret.getExemplaire().getRef() : (reference != null ? reference : "") %>">
         </div>
         <br>
         <label for="datePret">Date de pret</label>
         <div class="input">
-            <input type="date" name = "datePret" id = "datePret" value="<%= isEdit ? pret.getDatePris() : (numero != null ? numero : "") %>">
+            <input type="date" name = "datePret" id = "datePret" value="<%= isEdit ? pret.getDatePris() : (datePris != null ? datePris : "") %>">
         </div>
         <br>
         <label for="typePret">Type de pret</label>

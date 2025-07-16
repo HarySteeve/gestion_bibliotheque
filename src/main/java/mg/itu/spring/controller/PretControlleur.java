@@ -41,7 +41,7 @@ public class PretControlleur {
     @PostMapping("/pret/effectuer")
     public String preterUnLivre(
         @RequestParam int idAdherant,
-        @RequestParam int numero,
+        @RequestParam String reference,
         @RequestParam String idTypePret,
         @RequestParam LocalDate datePret,
         RedirectAttributes redirectAttributes,
@@ -49,7 +49,7 @@ public class PretControlleur {
     ) {
         Integer typePret = Integer.parseInt(idTypePret);
 
-        Exemplaire exemplaire = exemplaireService.findByNum(numero);
+        Exemplaire exemplaire = exemplaireService.findByRef(reference);
         Adherant adherant = adherantService.findById(idAdherant).orElse(null);
         TypePret typePretObjet = typePretService.getById(typePret);
 
@@ -98,7 +98,7 @@ public class PretControlleur {
     public String modifierPret(
         @RequestParam String id,
         @RequestParam int idAdherant,
-        @RequestParam int numero,
+        @RequestParam String reference,
         @RequestParam String idTypePret,
         @RequestParam LocalDate datePris,
         @RequestParam(required = false) LocalDate dateRendu,
@@ -110,7 +110,7 @@ public class PretControlleur {
         Pret pret = pretService.findById(idInteger);
 
         pret.setAdherant(adherantService.findById(idAdherant).orElse(null));
-        pret.setExemplaire(exemplaireService.findByNum(numero));
+        pret.setExemplaire(exemplaireService.findByRef(reference));
         pret.setTypePret(typePretService.getById(Integer.parseInt(idTypePret)));
         pret.setDatePris(datePris);
         pret.setDateRendu(dateRendu);

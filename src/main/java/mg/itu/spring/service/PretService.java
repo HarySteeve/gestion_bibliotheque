@@ -121,7 +121,7 @@ public class PretService {
         }
 
         Penalite penalite = penaliteService.getDernierePenalite(adherant.getId());
-        if (penalite != null && LocalDate.now().isAfter(penalite.getDateDebut()) && LocalDate.now().isBefore(penalite.getDateFin())) {
+        if (penalite != null && pret.getDatePris().isAfter(penalite.getDateDebut()) && pret.getDatePris().isBefore(penalite.getDateFin())) {
             long nbJours = ChronoUnit.DAYS.between(penalite.getDateDebut(), penalite.getDateFin());
             throw new IllegalArgumentException("Adhérant pénalisé de " + nbJours + " jours");
         }
@@ -152,7 +152,7 @@ public class PretService {
             Penalite penalite = new Penalite();
             penalite.setAdherant(pret.getAdherant());
             penalite.setDateDebut(pret.getDateRendu());
-            long dureePenalisation = ChronoUnit.DAYS.between(dateNormalRendue, pret.getDateRendu());
+            long dureePenalisation = pret.getAdherant().getProfil().getNbJourPenalite();
             LocalDate dateFinPenalisation = pret.getDateRendu().plusDays(dureePenalisation);
             penalite.setDateFin(dateFinPenalisation);
             penaliteService.save(penalite);

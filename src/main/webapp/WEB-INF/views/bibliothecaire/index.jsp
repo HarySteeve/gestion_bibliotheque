@@ -1,13 +1,25 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %> 
+<%@ page import="mg.itu.spring.entity.Bibliothecaire" %>
+<%
+    Bibliothecaire b = (Bibliothecaire) session.getAttribute("bibliothecaire");
+    if (b == null) {
+        response.sendRedirect(request.getContextPath() + "/");
+        return;
+    }
+%>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Accueil Bibliothécaire</title>
 </head>
 <body>
-    <h1>BOBOLOTHEQUE</h1>
+    <h2>Bienvenue Bibliothécaire</h2>
+    <p>Nom : <strong><%= b.getNom() %></strong></p>
+    <p>Prénom : <strong><%= b.getPrenom() %></strong></p>
+
+    <hr/>
+
     <h3>CRUD</h3>
     <ul>
         <li><a href="${pageContext.request.contextPath}/profil">profil</a></li>
@@ -16,18 +28,15 @@
         <li><a href="${pageContext.request.contextPath}/exemplaire">exemplaire</a></li>
         <li><a href="${pageContext.request.contextPath}/bibliothecaire">bibliothecaire</a></li>
     </ul>
+
     <h3>Fonctionnalite</h3>
     <ul>
+        <li><a href="${pageContext.request.contextPath}/reservation/liste">validation reservation</a></li>
         <li><a href="${pageContext.request.contextPath}/livre/preter">preter un livre</a></li>
         <li><a href="${pageContext.request.contextPath}/reabonnement/add">reabonnement</a></li>
     </ul>
-    <h3>Fonctionnalite adherant</h3>
-    <ul>
-        <li><a href="${pageContext.request.contextPath}/reservation/demande">Demande de reservation</a></li>
-    </ul>
-    <!-- <h3>Login</h3>
-    <ul>
-        <li><a href="login">login</a></li>
-    </ul> -->
+
+    <hr/>
+    <a href="<%= request.getContextPath() %>/logout">Se déconnecter</a>
 </body>
 </html>

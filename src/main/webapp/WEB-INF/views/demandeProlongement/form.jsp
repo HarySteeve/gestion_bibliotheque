@@ -26,5 +26,6 @@
 
         <button type="submit">Valider</button>
     </form>
+    <a href="${pageContext.request.contextPath}/adherant/index">Retour</a>
 </body>
 </html>

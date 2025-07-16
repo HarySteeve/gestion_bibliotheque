@@ -2,8 +2,14 @@
 <%@ page import="java.util.List" %>
 <%@ page import="mg.itu.spring.entity.DemandeProlongement" %>
 <%@ page import="mg.itu.spring.entity.Pret" %>
+<%@ page import="mg.itu.spring.entity.Bibliothecaire" %>
 <%
     List<DemandeProlongement> demandes = (List<DemandeProlongement>) request.getAttribute("demandes");
+    Bibliothecaire b = (Bibliothecaire) session.getAttribute("bibliothecaire");
+    if (b == null) {
+        response.sendRedirect(request.getContextPath() + "/");
+        return;
+    }
 %>
 <!DOCTYPE html>
 <html lang="fr">
@@ -65,10 +71,14 @@
                         <td><%= pret.getDatePris() %></td>
                         <td><%= pret.getAdherant().getNom() %> <%= pret.getAdherant().getPrenom() %></td>
                         <td><%= demande.getDateDemande() %></td>
-                        <td><%= demande.getDebutProlongement() %></td>
-                        <td><%= demande.getFinProlongement() %></td>
+                        <td><%= demande.getDebutProlongement() != null ? demande.getDebutProlongement() : "-" %></td>
+                        <td><%= demande.getFinProlongement() != null ? demande.getFinProlongement() : "-" %></td>
                         <td>
-                            <a class="action-btn" href="<%= request.getContextPath() %>/prolongement/valider?id=<%= demande.getId() %>">Valider</a>
+                            <% if(demande.getDebutProlongement() == null) { %>
+                                <a class="action-btn" href="<%= request.getContextPath() %>/prolongement/valider/<%= demande.getId() %>">Valider</a>
+                            <% } else { %>
+                                <span style="color: gray;">Validee</span>
+                            <% } %>
                         </td>
                     </tr>
                 <% } %>
@@ -77,6 +87,6 @@
     <% } else { %>
         <p>Aucune demande de prolongement en attente.</p>
     <% } %>
-
+    <a href="${pageContext.request.contextPath}/bibliothecaire/index">Retour</a>
 </body>
 </html>

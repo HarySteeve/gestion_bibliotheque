@@ -30,4 +30,6 @@ public interface PretRepository extends JpaRepository<Pret, Integer> {
     @Query(value = "SELECT * FROM pret WHERE id_exemplaire = :idExemplaire ORDER BY date_pris DESC LIMIT 1", nativeQuery = true)
     Pret findDernierPretByExemplaireId(@Param("idExemplaire") int idExemplaire);
 
+    Pret findTopByAdherantIdOrderByDatePrisDesc(int idAdherant);
+
 }

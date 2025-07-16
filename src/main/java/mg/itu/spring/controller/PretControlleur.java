@@ -28,6 +28,9 @@ public class PretControlleur {
     @Autowired
     private TypePretService typePretService;
 
+    @Autowired
+    private DemandeProlongementService demandeService;
+
     @GetMapping("/livre/preter")
     public String formPreterLivre(Model model) {
         List<TypePret> typePrets = typePretService.getAll();
@@ -100,7 +103,8 @@ public class PretControlleur {
         @RequestParam LocalDate datePris,
         @RequestParam(required = false) LocalDate dateRendu,
         @RequestParam(required = false) String causePenalite,
-        RedirectAttributes redirectAttributes
+        RedirectAttributes redirectAttributes,
+        Model model
     ) {
         Integer idInteger = Integer.parseInt(id);
         Pret pret = pretService.findById(idInteger);
@@ -110,22 +114,7 @@ public class PretControlleur {
         pret.setTypePret(typePretService.getById(Integer.parseInt(idTypePret)));
         pret.setDatePris(datePris);
         pret.setDateRendu(dateRendu);
-        // int durePretAdherant = pret.getAdherant().getProfil().getDureePret();
-        // LocalDate dateNormalRendue = pret.getDatePris().plusDays(durePretAdherant);
-        // if(pret.getDateRendu().isAfter(dateNormalRendue)) {
-        //     Penalite penalite = new Penalite();
-        //     penalite.setAdherant(pret.getAdherant());
-        //     penalite.setDateDebut(pret.getDateRendu());
-        //     long dureePenalisation = ChronoUnit.DAYS.between(dateNormalRendue, pret.getDateRendu());
-        //     LocalDate dateFinPenalisation = pret.getDateRendu().plusDays(dureePenalisation);
-        //     penalite.setDateFin(dateFinPenalisation);
-        //     penaliteService.save(penalite);
 
-        //     pret.setCausePenalite("Rendement du livre retard de "+ dureePenalisation +"j");
-        // }
-        // pretService.verifierPretValide(pret);
-        // pretService.save(pret);
-        // pret.getExemplaire().setDateIndispo(null);
         pretService.rendreLivre(pret);
         redirectAttributes.addFlashAttribute("successMessage", "Pret modifie avec succes !");
         return "redirect:/livre/preter";

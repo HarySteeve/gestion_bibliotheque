@@ -34,6 +34,7 @@
         <li><a href="${pageContext.request.contextPath}/reservation/liste">validation reservation</a></li>
         <li><a href="${pageContext.request.contextPath}/livre/preter">preter un livre</a></li>
         <li><a href="${pageContext.request.contextPath}/reabonnement/add">reabonnement</a></li>
+        <li><a href="${pageContext.request.contextPath}/prolongement/list">Validation prolongement</a></li>
     </ul>
 
     <hr/>
